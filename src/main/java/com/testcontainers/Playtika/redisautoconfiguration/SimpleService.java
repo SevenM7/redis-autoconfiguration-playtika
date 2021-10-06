@@ -7,8 +7,10 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Slf4j
-@CacheConfig(cacheNames={"cache-simple"})
+@CacheConfig(cacheNames={SimpleService.CACHE_NAME})
 public class SimpleService {
+
+    public static final String CACHE_NAME = "cache-simple";
 
     @Cacheable(key = "#id", unless = "#result == null")
     public String simpleMethod(String id) {
